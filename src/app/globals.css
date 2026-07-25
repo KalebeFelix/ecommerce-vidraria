@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  --color-cream: #fafaf7;
+  --color-mist: #efeeea;
+  --color-ink: #181818;
+  --color-red-vivid: #e6432e;
+  --color-red-vivid-dark: #c93321;
+  --color-wine: #a83e3e;
+}
+
+@theme inline {
+  --color-cream: var(--color-cream);
+  --color-mist: var(--color-mist);
+  --color-ink: var(--color-ink);
+  --color-red-vivid: var(--color-red-vivid);
+  --color-red-vivid-dark: var(--color-red-vivid-dark);
+  --color-wine: var(--color-wine);
+
+  --font-display: var(--font-oswald);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-fraunces);
+
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  overflow-x: clip;
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-red-vivid);
+  color: white;
+}
+
+.glass {
+  background: rgb(255 255 255 / 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgb(255 255 255 / 0.3);
+}
+
+.glass-dark {
+  background: rgb(24 24 24 / 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgb(255 255 255 / 0.1);
+}
