@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useInView, animate } from "framer-motion";
+import { animate, type AnimationPlaybackControls } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 export function StatCounter({
@@ -16,18 +16,49 @@ export function StatCounter({
   className?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
-    if (!inView) return;
-    const controls = animate(0, target, {
-      duration,
-      ease: "easeOut",
-      onUpdate: (v) => setDisplay(Math.round(v)),
-    });
-    return () => controls.stop();
-  }, [inView, target, duration]);
+    const el = ref.current;
+    if (!el) return;
+
+    let controls: AnimationPlaybackControls | undefined;
+    let started = false;
+
+    function start() {
+      if (started) return;
+      started = true;
+      controls = animate(0, target, {
+        duration,
+        ease: "easeOut",
+        onUpdate: (v) => setDisplay(Math.round(v)),
+      });
+    }
+
+    // threshold: 0 (dispara assim que 1px estiver visível) em vez de rootMargin
+    // negativo — em alguns navegadores (Safari/iOS em especial, com scroll rápido
+    // por inércia) uma margem negativa some sem nunca cruzar o threshold.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          start();
+          observer.disconnect();
+        }
+      },
+      { threshold: 0 }
+    );
+    observer.observe(el);
+
+    // Rede de segurança: se o IntersectionObserver não disparar por qualquer
+    // motivo, garante que o contador nunca fique travado em 0 para sempre.
+    const fallback = window.setTimeout(start, 2500);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(fallback);
+      controls?.stop();
+    };
+  }, [target, duration]);
 
   return (
     <span ref={ref} className={cn(className)}>
