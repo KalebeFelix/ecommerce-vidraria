@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "ponto-do-vidro",
+      name: "Next-ecommerce-vidraria",
       script: ".next/standalone/server.js",
       env: {
         PORT: 4000,
