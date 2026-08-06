@@ -7,6 +7,7 @@ import {
   Building2,
   ShieldCheck,
   Frame,
+  Wine,
 } from "lucide-react";
 
 import type { ProductCategory } from "@/lib/types";
@@ -21,7 +22,7 @@ import boxSec2 from "@/assets/images/products/boxes/preto-branco-moderno-01.jpg"
 
 import espelhoHero from "@/assets/images/products/espelhos/sala-jantar-01.jpg";
 import espelhoSec1 from "@/assets/images/products/espelhos/lavabo-dourado-01.jpg";
-import espelhoSec2 from "@/assets/images/products/espelhos/fragmentado-arte-01.jpg";
+import espelhoSec2 from "@/assets/images/products/portas-janelas/espelhada-vista-cidade-01.jpg";
 
 import guardaCorpoHero from "@/assets/images/products/guarda-corpo/escada-vidro-bronze-01.jpg";
 import guardaCorpoSec1 from "@/assets/images/products/guarda-corpo/escada-pedra-01.jpg";
@@ -29,10 +30,11 @@ import guardaCorpoSec2 from "@/assets/images/products/guarda-corpo/fachada-terra
 
 import portaHero from "@/assets/images/products/portas-janelas/sala-reuniao-01.jpg";
 import portaSec1 from "@/assets/images/products/portas-janelas/canelado-loft-01.jpg";
-import portaSec2 from "@/assets/images/products/portas-janelas/espelhada-vista-cidade-01.jpg";
+import portaSec2 from "@/assets/images/products/fachadas/sala-jardim-01.jpg";
 
-import fachadaHero from "@/assets/images/products/fachadas/sala-jardim-01.jpg";
+import fachadaHero from "@/assets/images/products/fachadas/loja-fort-louro-01.jpg";
 import fachadaSec1 from "@/assets/images/products/fachadas/jardim-ceu-azul-01.jpg";
+import fachadaSec2 from "@/assets/images/products/fachadas/loja-essence-01.jpg";
 
 import temperadoHero from "@/assets/images/products/vidros-temperados/banheira-nicho-01.jpg";
 import temperadoSec1 from "@/assets/images/products/vidros-temperados/banheiro-completo-01.jpg";
@@ -40,6 +42,10 @@ import temperadoSec1 from "@/assets/images/products/vidros-temperados/banheiro-c
 import aluminioHero from "@/assets/images/products/estruturas-aluminio/cozinha-correr-01.jpg";
 import aluminioSec1 from "@/assets/images/products/estruturas-aluminio/armario-espelho-banheiro-01.jpg";
 import aluminioSec2 from "@/assets/images/products/estruturas-aluminio/adega-vidro-bronze-01.jpg";
+
+import cristaleiraHero from "@/assets/images/products/cristaleiras/sala-jantar-luminaria-01.jpg";
+import cristaleiraSec1 from "@/assets/images/products/cristaleiras/branca-classica-01.jpg";
+import cristaleiraSec2 from "@/assets/images/products/cristaleiras/madeira-espelho-01.jpg";
 
 export const productCategories: ProductCategory[] = [
   {
@@ -84,7 +90,7 @@ export const productCategories: ProductCategory[] = [
     hero: { src: espelhoHero, alt: "Parede espelhada em sala de jantar" },
     secondary: [
       { src: espelhoSec1, alt: "Lavabo com espelho iluminado e acabamento dourado" },
-      { src: espelhoSec2, alt: "Espelho decorativo fragmentado em corredor" },
+      { src: espelhoSec2, alt: "Porta de vidro espelhado com vista da cidade" },
     ],
   },
   {
@@ -114,7 +120,7 @@ export const productCategories: ProductCategory[] = [
     hero: { src: portaHero, alt: "Sala de reunião com porta de vidro e estrutura de alumínio preto" },
     secondary: [
       { src: portaSec1, alt: "Portas de vidro canelado em ambiente estilo loft" },
-      { src: portaSec2, alt: "Porta de vidro espelhado com vista da cidade" },
+      { src: portaSec2, alt: "Sala integrada com portas de vidro e jardim" },
     ],
   },
   {
@@ -123,11 +129,14 @@ export const productCategories: ProductCategory[] = [
     name: "Fachadas em Vidro",
     tagline: "A arquitetura em primeiro plano",
     description:
-      "Fechamentos e fachadas inteiras em vidro temperado, integrando ambientes internos e externos com o máximo de luz natural e transparência.",
-    badge: "Vidro temperado laminado",
+      "Fechamentos e fachadas comerciais inteiras em vidro temperado, integrando ambientes internos e externos com o máximo de luz natural e transparência.",
+    badge: "Vidro temperado",
     icon: Building2,
-    hero: { src: fachadaHero, alt: "Fachada de vidro integrando sala interna e jardim" },
-    secondary: [{ src: fachadaSec1, alt: "Fachada de vidro com jardim e céu azul" }],
+    hero: { src: fachadaHero, alt: "Fachada de vidro em loja de shopping" },
+    secondary: [
+      { src: fachadaSec1, alt: "Fachada de vidro com jardim e céu azul" },
+      { src: fachadaSec2, alt: "Fachada de vidro em loja de shopping" },
+    ],
   },
   {
     slug: "vidros-temperados",
@@ -154,6 +163,21 @@ export const productCategories: ProductCategory[] = [
     secondary: [
       { src: aluminioSec1, alt: "Armário espelhado com estrutura de alumínio em banheiro" },
       { src: aluminioSec2, alt: "Adega de vinhos em vidro e estrutura de bronze" },
+    ],
+  },
+  {
+    slug: "cristaleiras",
+    index: "09",
+    name: "Cristaleiras",
+    tagline: "Vitrines de vidro sob medida",
+    description:
+      "Cristaleiras e vitrines em vidro e cristal, com prateleiras suspensas e iluminação embutida, projetadas sob medida para valorizar louças, taças e peças decorativas.",
+    badge: "Prateleiras suspensas",
+    icon: Wine,
+    hero: { src: cristaleiraHero, alt: "Sala de jantar com cristaleira embutida e iluminação em led" },
+    secondary: [
+      { src: cristaleiraSec1, alt: "Cristaleira branca clássica com louças e cristais" },
+      { src: cristaleiraSec2, alt: "Cristaleira de madeira com espelho e taças coloridas" },
     ],
   },
 ];

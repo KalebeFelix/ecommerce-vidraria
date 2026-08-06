@@ -18,7 +18,7 @@ const DEST_DIR = path.join(ROOT, "src", "assets", "images");
 const MAX_WIDTH = 2000;
 const JPEG_QUALITY = 82;
 
-/** @type {{src: string, dest: string}[]} */
+/** @type {{src: string, dest: string, cropBottomPercent?: number}[]} */
 const MANIFEST = [
   // ---- Hero ----
   { src: "cortinas-de-vidro/WhatsApp Image 2026-07-20 at 09.37.04 (4).jpeg", dest: "hero/vista-mar-hero.jpg" },
@@ -77,16 +77,46 @@ const MANIFEST = [
 
   // ---- Logo ----
   { src: "logo/logo.jpeg", dest: "misc/logo.jpg" },
+
+  // ---- Produtos: Cristaleiras ----
+  { src: "cristaleiras/WhatsApp Image 2026-08-05 at 10.49.03 (1).jpeg", dest: "products/cristaleiras/sala-jantar-luminaria-01.jpg" },
+  { src: "cristaleiras/WhatsApp Image 2026-08-05 at 10.49.02.jpeg", dest: "products/cristaleiras/branca-classica-01.jpg" },
+  { src: "cristaleiras/WhatsApp Image 2026-08-05 at 10.49.03 (3).jpeg", dest: "products/cristaleiras/madeira-espelho-01.jpg" },
+
+  // ---- Galeria: Cristaleiras (extras) ----
+  { src: "cristaleiras/WhatsApp Image 2026-08-05 at 10.49.02 (1).jpeg", dest: "gallery/cristaleira-detalhe-porta-01.jpg" },
+  { src: "cristaleiras/WhatsApp Image 2026-08-05 at 10.49.04.jpeg", dest: "gallery/cristaleira-dourada-minimal-01.jpg", cropBottomPercent: 0.13 },
+  { src: "faixadas/WhatsApp Image 2026-08-05 at 10.48.23 (3).jpeg", dest: "gallery/cristaleira-colecionaveis-01.jpg" },
+
+  // ---- Produtos: Fachadas em Vidro (fotos novas, dedicadas) ----
+  { src: "faixadas/WhatsApp Image 2026-08-05 at 10.48.22 (1).jpeg", dest: "products/fachadas/loja-fort-louro-01.jpg" },
+  { src: "faixadas/WhatsApp Image 2026-08-05 at 10.48.22.jpeg", dest: "products/fachadas/loja-essence-01.jpg" },
+
+  // ---- Galeria: Fachadas (extras) ----
+  { src: "faixadas/WhatsApp Image 2026-08-05 at 10.48.22 (2).jpeg", dest: "gallery/fachada-fort-louro-02.jpg" },
+  { src: "faixadas/WhatsApp Image 2026-08-05 at 10.48.23.jpeg", dest: "gallery/fachada-corner-cidade-01.jpg" },
 ];
 
 async function run() {
   let ok = 0;
-  for (const { src, dest } of MANIFEST) {
+  for (const { src, dest, cropBottomPercent } of MANIFEST) {
     const srcPath = path.join(DATA_DIR, src);
     const destPath = path.join(DEST_DIR, dest);
     await mkdir(path.dirname(destPath), { recursive: true });
-    await sharp(srcPath)
-      .rotate() // normalize EXIF orientation, then strip it
+
+    let pipeline = sharp(srcPath).rotate(); // normalize EXIF orientation, then strip it
+
+    if (cropBottomPercent) {
+      const { width, height } = await sharp(srcPath).rotate().metadata();
+      pipeline = pipeline.extract({
+        left: 0,
+        top: 0,
+        width,
+        height: Math.round(height * (1 - cropBottomPercent)),
+      });
+    }
+
+    await pipeline
       .resize({ width: MAX_WIDTH, withoutEnlargement: true })
       .jpeg({ quality: JPEG_QUALITY, mozjpeg: true })
       .toFile(destPath);

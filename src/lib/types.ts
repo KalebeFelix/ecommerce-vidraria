@@ -9,7 +9,8 @@ export type ProductCategorySlug =
   | "portas-janelas"
   | "fachadas"
   | "vidros-temperados"
-  | "estruturas-aluminio";
+  | "estruturas-aluminio"
+  | "cristaleiras";
 
 export interface ProductImage {
   src: StaticImageData;

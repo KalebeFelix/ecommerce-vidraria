@@ -23,8 +23,12 @@ import portaSalaReuniao from "@/assets/images/products/portas-janelas/sala-reuni
 import portaCanelado from "@/assets/images/products/portas-janelas/canelado-loft-01.jpg";
 import portaEspelhada from "@/assets/images/products/portas-janelas/espelhada-vista-cidade-01.jpg";
 
-import fachadaSalaJardim from "@/assets/images/products/fachadas/sala-jardim-01.jpg";
+import portaSalaJardim from "@/assets/images/products/fachadas/sala-jardim-01.jpg";
 import fachadaJardimCeu from "@/assets/images/products/fachadas/jardim-ceu-azul-01.jpg";
+import fachadaLojaFortLouro from "@/assets/images/products/fachadas/loja-fort-louro-01.jpg";
+import fachadaLojaEssence from "@/assets/images/products/fachadas/loja-essence-01.jpg";
+import fachadaFortLouro02 from "@/assets/images/gallery/fachada-fort-louro-02.jpg";
+import fachadaCornerCidade from "@/assets/images/gallery/fachada-corner-cidade-01.jpg";
 
 import temperadoBanheira from "@/assets/images/products/vidros-temperados/banheira-nicho-01.jpg";
 import temperadoBanheiroCompleto from "@/assets/images/products/vidros-temperados/banheiro-completo-01.jpg";
@@ -36,6 +40,13 @@ import aluminioAdega from "@/assets/images/products/estruturas-aluminio/adega-vi
 import closetEspelhado from "@/assets/images/gallery/closet-espelhado-01.jpg";
 import painelTvLacado from "@/assets/images/gallery/painel-tv-lacado-01.jpg";
 
+import cristaleiraSalaJantar from "@/assets/images/products/cristaleiras/sala-jantar-luminaria-01.jpg";
+import cristaleiraBranca from "@/assets/images/products/cristaleiras/branca-classica-01.jpg";
+import cristaleiraMadeira from "@/assets/images/products/cristaleiras/madeira-espelho-01.jpg";
+import cristaleiraDetalhePorta from "@/assets/images/gallery/cristaleira-detalhe-porta-01.jpg";
+import cristaleiraDourada from "@/assets/images/gallery/cristaleira-dourada-minimal-01.jpg";
+import cristaleiraColecionaveis from "@/assets/images/gallery/cristaleira-colecionaveis-01.jpg";
+
 const categoryLabels: Record<ProductCategorySlug, string> = {
   "cortina-de-vidro": "Cortina de Vidro",
   boxes: "Box",
@@ -45,6 +56,7 @@ const categoryLabels: Record<ProductCategorySlug, string> = {
   fachadas: "Fachadas em Vidro",
   "vidros-temperados": "Vidros Temperados",
   "estruturas-aluminio": "Estruturas em Alumínio e Vidro",
+  cristaleiras: "Cristaleiras",
 };
 
 function item(
@@ -60,7 +72,9 @@ export const galleryItems: GalleryItem[] = [
   item("cortina-vista-mar", cortinaVistaMar, "Varanda com cortina de vidro e vista para o mar", "cortina-de-vidro"),
   item("box-marmore", boxMarmore, "Banheiro com box de vidro e mármore escuro", "boxes"),
   item("espelho-sala-jantar", espelhoSalaJantar, "Parede espelhada em sala de jantar", "espelhos"),
-  item("fachada-sala-jardim", fachadaSalaJardim, "Fachada de vidro integrando sala e jardim", "fachadas"),
+  item("cristaleira-sala-jantar", cristaleiraSalaJantar, "Sala de jantar com cristaleira embutida e iluminação em led", "cristaleiras"),
+  item("fachada-loja-fort-louro", fachadaLojaFortLouro, "Fachada de vidro em loja de shopping", "fachadas"),
+  item("porta-sala-jardim", portaSalaJardim, "Sala integrada com portas de vidro e jardim", "portas-janelas"),
   item("guarda-corpo-escada-vidro", guardaCorpoEscadaVidro, "Escada com guarda-corpo de vidro e bronze", "guarda-corpo"),
   item("porta-sala-reuniao", portaSalaReuniao, "Sala de reunião com porta de vidro e alumínio preto", "portas-janelas"),
   item("box-calacatta", boxCalacatta, "Banheiro em mármore Calacatta com banheira e box de vidro", "boxes"),
@@ -75,7 +89,7 @@ export const galleryItems: GalleryItem[] = [
   item("aluminio-cozinha", aluminioCozinha, "Cozinha com porta de vidro de correr em alumínio", "estruturas-aluminio"),
   item("espelho-fragmentado", espelhoFragmentado, "Espelho decorativo fragmentado em corredor", "espelhos"),
   item("temperado-banheiro-completo", temperadoBanheiroCompleto, "Banheiro completo com box de vidro temperado", "vidros-temperados"),
-  item("porta-espelhada", portaEspelhada, "Porta de vidro espelhado com vista da cidade", "portas-janelas"),
+  item("espelho-porta-vista-cidade", portaEspelhada, "Porta de vidro espelhado com vista da cidade", "espelhos"),
   item("cortina-poltrona", cortinaPoltrona, "Cortina de vidro em varanda decorada", "cortina-de-vidro"),
   item("guarda-corpo-fachada", guardaCorpoFachada, "Terraço com guarda-corpo de vidro", "guarda-corpo"),
   item("box-trilho-dourado", boxTrilhoDourado, "Box de vidro com trilho dourado", "boxes"),
@@ -84,4 +98,12 @@ export const galleryItems: GalleryItem[] = [
   item("painel-tv-lacado", painelTvLacado, "Painel de vidro lacado para TV", "vidros-temperados"),
   item("cortina-entardecer", cortinaEntardecer, "Cortina de vidro ao entardecer", "cortina-de-vidro"),
   item("box-cobre", boxCobre, "Box de vidro com acabamento em cobre", "boxes"),
+  item("cristaleira-branca", cristaleiraBranca, "Cristaleira branca clássica com louças e cristais", "cristaleiras"),
+  item("cristaleira-madeira", cristaleiraMadeira, "Cristaleira de madeira com espelho e taças coloridas", "cristaleiras"),
+  item("cristaleira-detalhe-porta", cristaleiraDetalhePorta, "Detalhe da porta de vidro de cristaleira", "cristaleiras"),
+  item("cristaleira-dourada", cristaleiraDourada, "Cristaleiras suspensas com estrutura dourada", "cristaleiras"),
+  item("cristaleira-colecionaveis", cristaleiraColecionaveis, "Cristaleira com coleção de miniaturas", "cristaleiras"),
+  item("fachada-loja-essence", fachadaLojaEssence, "Fachada de vidro em loja de shopping", "fachadas"),
+  item("fachada-fort-louro-detalhe", fachadaFortLouro02, "Detalhe da fachada de vidro em loja de shopping", "fachadas"),
+  item("fachada-corner-cidade", fachadaCornerCidade, "Fechamento de vidro em esquina com vista da cidade", "fachadas"),
 ];

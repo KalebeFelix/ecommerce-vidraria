@@ -48,7 +48,7 @@ export function AboutSection() {
             <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden justify-between px-4 pb-4 lg:flex">
               {teamMembers.map((member, i) => (
                 <motion.div
-                  key={member.name}
+                  key={member.role}
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{
                     opacity: 1,
@@ -76,7 +76,7 @@ export function AboutSection() {
             {/* Chips — mobile */}
             <div className="mt-4 flex gap-4 lg:hidden">
               {teamMembers.map((member) => (
-                <div key={member.name} className="flex flex-1 items-center gap-3 rounded-xl bg-mist p-3">
+                <div key={member.role} className="flex flex-1 items-center gap-3 rounded-xl bg-mist p-3">
                   <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg">
                     <Image src={member.image} alt={member.name} fill sizes="56px" className="object-cover" />
                   </div>

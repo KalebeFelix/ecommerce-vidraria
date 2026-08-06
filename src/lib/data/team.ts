@@ -6,7 +6,7 @@ import socialSenior from "@/assets/images/about/socia-senior-01.jpg";
 import socialJunior from "@/assets/images/about/socia-junior-01.jpg";
 
 export const aboutStory =
-  "A Ponto do Vidro é uma empresa que atua no setor vidreiro desde 1997 no mercado de Fortaleza-CE. A grande experiência somada ao amor pela atividade faz da Ponto do Vidro uma empresa sólida e conceituada.";
+  "A Ponto do Vidro é uma empresa que atua no setor vidreiro desde 1997 no mercado de Fortaleza-CE e Região Metropolitana. A grande experiência somada ao amor pela atividade faz da Ponto do Vidro uma empresa sólida e conceituada.";
 
 export const aboutHeroImage = duoPrincipal;
 
