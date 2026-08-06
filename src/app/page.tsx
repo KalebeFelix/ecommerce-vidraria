@@ -5,6 +5,7 @@ import { ProductsDetailed } from "@/components/products/ProductsDetailed";
 import { GallerySection } from "@/components/gallery/GallerySection";
 import { ServicesSection } from "@/components/services/ServicesSection";
 import { AboutSection } from "@/components/about/AboutSection";
+import { ReviewsSection } from "@/components/reviews/ReviewsSection";
 import { CtaSection } from "@/components/cta/CtaSection";
 import { ContactSection } from "@/components/contact/ContactSection";
 
@@ -18,6 +19,7 @@ export default function Home() {
       <GallerySection />
       <ServicesSection />
       <AboutSection />
+      <ReviewsSection />
       <CtaSection />
       <ContactSection />
     </main>

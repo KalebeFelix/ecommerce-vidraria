@@ -1,4 +1,5 @@
 import { siteConfig } from "@/lib/data/site-config";
+import { googleRating } from "@/lib/data/reviews";
 
 export function JsonLd() {
   const data = {
@@ -18,6 +19,11 @@ export function JsonLd() {
       addressCountry: "BR",
     },
     sameAs: [siteConfig.instagram.url],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: String(googleRating.score),
+      reviewCount: String(googleRating.count),
+    },
   };
 
   return (
