@@ -50,7 +50,7 @@ export function Header() {
                 <Image
                   src={logo}
                   alt="Ponto do Vidro"
-                  className="h-11 w-auto sm:h-12"
+                  className="h-16 w-auto sm:h-20"
                   priority
                 />
               </span>
