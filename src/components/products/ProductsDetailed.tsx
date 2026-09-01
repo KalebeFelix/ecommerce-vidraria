@@ -1,17 +1,77 @@
 "use client";
 
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Pause, Play, Volume2, VolumeX } from "lucide-react";
 
 import { Container } from "@/components/ui/Container";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { Button } from "@/components/ui/Button";
 import { productCategories } from "@/lib/data/products";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
-import type { ProductCategory } from "@/lib/types";
+import type { ProductCategory, ProductVideo } from "@/lib/types";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
+
+function HeroVideo({
+  video,
+  reduceMotion,
+  reversed,
+}: {
+  video: ProductVideo;
+  reduceMotion: boolean | null;
+  reversed: boolean;
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(!reduceMotion);
+  const [isMuted, setIsMuted] = useState(true);
+
+  function togglePlay() {
+    const el = videoRef.current;
+    if (!el) return;
+    if (el.paused) {
+      el.play();
+      setIsPlaying(true);
+    } else {
+      el.pause();
+      setIsPlaying(false);
+    }
+  }
+
+  return (
+    <>
+      <video
+        ref={videoRef}
+        src={video.src}
+        poster={video.poster}
+        autoPlay={!reduceMotion}
+        muted={isMuted}
+        loop
+        playsInline
+        className="h-full w-full object-cover"
+      />
+      <div className={`absolute top-5 z-20 flex gap-2 ${reversed ? "right-5" : "left-5"}`}>
+        <button
+          type="button"
+          onClick={() => setIsMuted((m) => !m)}
+          aria-label={isMuted ? "Ativar som do vídeo" : "Silenciar vídeo"}
+          className="glass flex h-9 w-9 items-center justify-center rounded-full text-white transition-colors hover:bg-white/30"
+        >
+          {isMuted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+        </button>
+        <button
+          type="button"
+          onClick={togglePlay}
+          aria-label={isPlaying ? "Pausar vídeo" : "Reproduzir vídeo"}
+          className="glass flex h-9 w-9 items-center justify-center rounded-full text-white transition-colors hover:bg-white/30"
+        >
+          {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+        </button>
+      </div>
+    </>
+  );
+}
 
 function ProductBlock({ category, index }: { category: ProductCategory; index: number }) {
   const reduceMotion = useReducedMotion();
@@ -39,16 +99,7 @@ function ProductBlock({ category, index }: { category: ProductCategory; index: n
               className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] shadow-xl lg:aspect-[3/4]"
             >
               {category.heroVideo ? (
-                <video
-                  src={category.heroVideo.src}
-                  poster={category.heroVideo.poster}
-                  autoPlay={!reduceMotion}
-                  muted
-                  loop
-                  playsInline
-                  controls={!!reduceMotion}
-                  className="h-full w-full object-cover"
-                />
+                <HeroVideo video={category.heroVideo} reduceMotion={reduceMotion} reversed={reversed} />
               ) : (
                 <Image
                   src={category.hero.src}
