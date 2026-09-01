@@ -160,6 +160,10 @@ export const productCategories: ProductCategory[] = [
     badge: "Estrutura sob medida",
     icon: Frame,
     hero: { src: aluminioHero, alt: "Cozinha com porta de vidro de correr em estrutura de alumínio" },
+    heroVideo: {
+      src: "/videos/estruturas-aluminio-portas-basculantes.mp4",
+      poster: "/videos/estruturas-aluminio-portas-basculantes-poster.jpg",
+    },
     secondary: [
       { src: aluminioSec1, alt: "Armário espelhado com estrutura de alumínio em banheiro" },
       { src: aluminioSec2, alt: "Adega de vinhos em vidro e estrutura de bronze" },

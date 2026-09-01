@@ -20,9 +20,10 @@
 # production
 /build
 
-# imagens reais (enviadas separadamente para o servidor, não versionadas no git)
+# imagens e vídeos reais (enviados separadamente para o servidor, não versionados no git)
 /src/assets/images
 /public/og-image.jpg
+/public/videos
 
 
 # misc

@@ -17,6 +17,11 @@ export interface ProductImage {
   alt: string;
 }
 
+export interface ProductVideo {
+  src: string;
+  poster: string;
+}
+
 export interface ProductCategory {
   slug: ProductCategorySlug;
   index: string;
@@ -26,6 +31,8 @@ export interface ProductCategory {
   badge: string;
   icon: LucideIcon;
   hero: ProductImage;
+  /** Quando presente, o bloco editorial mostra este vídeo no lugar da imagem hero. */
+  heroVideo?: ProductVideo;
   secondary: ProductImage[];
 }
 

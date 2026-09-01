@@ -38,13 +38,26 @@ function ProductBlock({ category, index }: { category: ProductCategory; index: n
               transition={{ duration: 1, ease: EASE }}
               className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] shadow-xl lg:aspect-[3/4]"
             >
-              <Image
-                src={category.hero.src}
-                alt={category.hero.alt}
-                fill
-                sizes="(min-width: 1024px) 45vw, 100vw"
-                className="object-cover"
-              />
+              {category.heroVideo ? (
+                <video
+                  src={category.heroVideo.src}
+                  poster={category.heroVideo.poster}
+                  autoPlay={!reduceMotion}
+                  muted
+                  loop
+                  playsInline
+                  controls={!!reduceMotion}
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <Image
+                  src={category.hero.src}
+                  alt={category.hero.alt}
+                  fill
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  className="object-cover"
+                />
+              )}
               <div className="glass absolute bottom-5 left-5 flex items-center gap-2 rounded-xl px-4 py-2 text-white">
                 <Icon className="h-4 w-4" />
                 <span className="text-xs font-medium uppercase tracking-wide">{category.badge}</span>
